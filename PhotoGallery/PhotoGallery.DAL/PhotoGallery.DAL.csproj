@@ -60,6 +60,10 @@
     <Compile Include="Migrations\202104031829536_Initial.designer.cs">
       <DependentUpon>202104031829536_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104031929193_UpdateEFModels.cs" />
+    <Compile Include="Migrations\202104031929193_UpdateEFModels.designer.cs">
+      <DependentUpon>202104031929193_UpdateEFModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104031829536_Initial.resx">
       <DependentUpon>202104031829536_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104031929193_UpdateEFModels.resx">
+      <DependentUpon>202104031929193_UpdateEFModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,10 @@ namespace PhotoGallery.DAL.EntityModels
     {
         public int PhotoId { get; set; }
 
+        [Required]
+        public string Path { get; set; }
+
+        [Required]
         [StringLength(50)]
         public string Title { get; set; }
 
