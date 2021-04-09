@@ -1,0 +1,58 @@
+﻿using PhotoGallery.DAL.EF;
+using PhotoGallery.DAL.EntityModels;
+using PhotoGallery.DAL.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PhotoGallery.DAL.Repositories
+{
+    public class PhotoRepository : IRepository<Photo>
+    {
+        GalleryContext _db;
+
+        public PhotoRepository(GalleryContext context)
+        {
+            _db = context;
+        }
+        public void Create(Photo photo)
+        {
+            _db.Photos.Add(photo);
+        }
+
+        public void Delete(int id)
+        {
+            Photo photo = _db.Photos.Find(id);
+            if (photo != null)
+                _db.Photos.Remove(photo);
+        }
+
+        public IEnumerable<Photo> GetAll()
+        {
+            return _db.Photos;
+        }
+
+        public IEnumerable<Photo> GetItemsByGenre(object photoFilter, Genre genre)
+        {
+            if (photoFilter != null)
+            {
+                return _db.Photos.OrderByDescending(i => i.PhotoId).Where(i => i.Genres.Contains(genre)).Take((int)photoFilter);
+            }                
+            else
+                return _db.Photos;
+        }
+
+        public Photo GetById(int id)
+        {
+            return _db.Photos.Find(id);
+        }
+
+        public void Update(Photo photo)
+        {
+            _db.Entry(photo).State = EntityState.Modified;
+        }
+    }
+}
