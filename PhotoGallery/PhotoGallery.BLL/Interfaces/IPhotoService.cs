@@ -9,7 +9,7 @@ namespace PhotoGallery.BLL.Interfaces
 {
     public interface IPhotoService
     {
-        IEnumerable<PhotoDTO> GetPhotos();
-        PhotoDTO GetPhoto(int id);
+        IEnumerable<PhotoDTO> GetAll();
+        PhotoDTO GetById(int id);
     }
 }

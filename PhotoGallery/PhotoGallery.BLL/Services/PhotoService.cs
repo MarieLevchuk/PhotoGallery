@@ -20,9 +20,9 @@ namespace PhotoGallery.BLL.Services
             _database = unitOfWork;
         }
 
-        public PhotoDTO GetPhoto(int id)
+        public PhotoDTO GetById(int id)
         {
-            if(id == null)
+            if(id == 0)
                 throw new ValidationException("Incorrect id", "");
             var photo = _database.Photos.GetById(id);
             if (photo == null)
@@ -33,7 +33,7 @@ namespace PhotoGallery.BLL.Services
             //return new PhotoDTO { PhotoId = photo.PhotoId, Author = photo.Author, Format=photo.Format, Path = photo.Path, Title = photo.Title };
         }
 
-        public IEnumerable<PhotoDTO> GetPhotos()
+        public IEnumerable<PhotoDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Photo>, List<PhotoDTO>>(_database.Photos.GetAll());

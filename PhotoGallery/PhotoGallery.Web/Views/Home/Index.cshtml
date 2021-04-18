@@ -1,35 +1,30 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Styles.Render("~/Content/photoGallery.css")
-@model IEnumerable<PhotoGallery.Web.Models.GenreViewModel>
+@model List<PhotoGallery.Web.Models.GenreViewModel>
 
 <header class="my_header">
     <div class="my_container">
         <div class="header_inner">
             <img class="header_logo" src="~/Content/source/logo.png">
-            <nav class="my_nav">
-                <a class="nav_link" href="#">Home</a>
-                <a class="nav_link" href="#nav_catalog">Catalog</a>
-                <a class="nav_link" href="#">Search</a>
-            </nav>
+            <nav class="my_nav"> <a class="nav_link" href="#catalog">Catalog</a> <a class="nav_link" href="#about">About</a> <a class="nav_link" href="#">Search</a> </nav>
             <!--end nav-->
         </div>
         <!--end header inner-->
     </div>
     <!--my_container-->
 </header>
-
+<!--end header-->
 <div class="my_page">
-    <section class="my_catalog">
+    <section class="my_catalog" id="catalog">
         <div class="my_container">
             <div class="catalog_inner">
-                <div class="catalog_name" id="nav_catalog">Catalog</div>
+                <div class="catalog_name">Catalog</div>
                 <div class="genres_list">
-                    @foreach (var item in Model)
+                    @foreach (var genre in Model)
                     {
-                        <a class="genre_link" href="#"> @item.Name </a>
+                        <a class="genre_link" href="/Home/ToGenre?genreId=@genre.GenreId">@genre.Name</a>
                     }
                 </div>
             </div>
@@ -37,25 +32,23 @@
         </div>
         <!--my_container-->
     </section>
-
+    
     <section class="my_gallery">
         <div class="gallery_inner">
-            
             @foreach (var genre in Model)
             {
                 <div class="photos_line">
-                    <a class="genre_title" href="#"> @genre.Name</a>
-                    @for (int i = 0; i < 5; i++)
-                    {
-                        <div class="photo_item" style="background: url(/Content/photos/5t68.jpg) center no-repeat;
-        background-size: cover;"> </div>
-                    }
-
+                    <div class="photos_container">
+                        <a class="genre_title" href="/Home/ToGenre?genreId=@genre.GenreId">@genre.Name</a>
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <div class="photo_item img" style="background: url(/Content/photos/5t68.jpg) center no-repeat; background-size: cover;"> </div>
+                        }
+                    </div>
                 </div>
-                <br/>
             }
-
         </div>
         <!--end gallery inner-->
     </section>
 </div>
+

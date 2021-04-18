@@ -1,20 +1,17 @@
-﻿@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
-@Scripts.Render("~/Content/photoGallery.css")
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/Content/photoGallery.css">
+    <link rel="stylesheet" href="~/Content/source/mystyle.css">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:300i,400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <title>Photo Gallery</title>
 </head>
+
 <body>
-
     @RenderBody()
-
-    <footer class="my_footer">
+    <footer class="my_footer" id="about">
         <div class="my_container">
             <div class="footer_inner">
                 <div class="copyright"> &copy 2021 by Marie Levchuk </div>
@@ -26,6 +23,7 @@
         </div>
         <!--my_container-->
     </footer>
-
+    <!--end footer-->
 </body>
+
 </html>

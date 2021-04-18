@@ -1,33 +1,41 @@
 ﻿
 @{
-    ViewBag.Title = "Photo by genre";
+    ViewBag.Title = "Genre";
 }
+@model PhotoGallery.Web.Models.GenreViewModel
 
-<header class="my_header">
+<header class="my_header_genre_page" style="height: 100px;">
     <div class="my_container">
-        <div class="header_inner">
+        <div class="header_inner_genre_page">
             <img class="header_logo" src="~/Content/source/logo.png">
-            <nav class="my_nav">
-                <a class="nav_link" href="#">Home</a>
-                <a class="nav_link" href="#nav_catalog">Catalog</a>
-                <a class="nav_link" href="#">Search</a>
-            </nav>
+            <nav class="my_nav"> <a class="nav_link" href="/Home/Index">Home</a> <a class="nav_link" href="#">Search</a> </nav>
             <!--end nav-->
+            <div class="my_title">
+                <div class="sharp"> #</div>
+                <h1>@Model.Name</h1>
+            </div>
         </div>
         <!--end header inner-->
     </div>
     <!--my_container-->
 </header>
-
-<footer class="my_footer">
+<div class="photos_tile">
     <div class="my_container">
-        <div class="footer_inner">
-            <div class="copyright"> &copy 2021 by Marie Levchuk </div>
-            <div class="copyright">
-                marie.levchuk@gmail.com
-                <br />+375 (xx) xxx-xx-xx
-            </div>
+        <div class="photos_tile_inner">
+            <div class="item"> item1 </div>
+            <div class="item">item 2</div>
+            <div class="item">item 3</div>
+            <div class="item">item 4</div>
+            <div class="item">item 5</div>
+            <div class="item">item 6</div>
+            <div class="item">item 7</div>
+            <div class="item">item 8</div>
+            <div class="item">item 9</div>
+            <div class="item">item 10</div>
+            <div class="item">item 11</div>
+            <div class="item">item 12</div>
         </div>
     </div>
-    <!--my_container-->
-</footer>
+</div>
+
+
