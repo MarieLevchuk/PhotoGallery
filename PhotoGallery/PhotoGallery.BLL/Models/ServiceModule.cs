@@ -1,11 +1,7 @@
-﻿using Ninject.Modules;
+﻿
+using Ninject.Modules;
 using PhotoGallery.DAL.Interfaces;
 using PhotoGallery.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.BLL.Models
 {

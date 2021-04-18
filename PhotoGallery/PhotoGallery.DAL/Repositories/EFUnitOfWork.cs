@@ -2,22 +2,18 @@
 using PhotoGallery.DAL.EntityModels;
 using PhotoGallery.DAL.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.DAL.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
-    {
+    {        
         GalleryContext _db;
         PhotoRepository _photoRepository;
         GenreRepository _genreRepository;
 
-        public EFUnitOfWork(GalleryContext context)
+        public EFUnitOfWork(string connectionString)
         {
-            _db = context;
+            _db = new GalleryContext(connectionString);
         }
 
         public IRepository<Photo> Photos

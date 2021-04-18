@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.BLL.Services
 {
-    class PhotoService : IPhotoService
+    public class PhotoService : IPhotoService
     {
         IUnitOfWork _database;
 

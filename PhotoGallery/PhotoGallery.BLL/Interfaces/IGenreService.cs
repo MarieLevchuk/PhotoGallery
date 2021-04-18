@@ -9,7 +9,7 @@ namespace PhotoGallery.BLL.Interfaces
 {
     public interface IGenreService
     {
-        IEnumerable<GenreDTO> GetGenres();
-        GenreDTO GetGenres(int id);
+        IEnumerable<GenreDTO> GetAll();
+        GenreDTO GetById(int id);
     }
 }
