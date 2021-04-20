@@ -22,18 +22,10 @@
 <div class="photos_tile">
     <div class="my_container">
         <div class="photos_tile_inner">
-            <div class="item"> item1 </div>
-            <div class="item">item 2</div>
-            <div class="item">item 3</div>
-            <div class="item">item 4</div>
-            <div class="item">item 5</div>
-            <div class="item">item 6</div>
-            <div class="item">item 7</div>
-            <div class="item">item 8</div>
-            <div class="item">item 9</div>
-            <div class="item">item 10</div>
-            <div class="item">item 11</div>
-            <div class="item">item 12</div>
+            @foreach (var photo in Model.Photos)
+            {
+                <div class="item" style="background: url(@photo.Path) center no-repeat; background-size: cover;"> </div>
+            }            
         </div>
     </div>
 </div>

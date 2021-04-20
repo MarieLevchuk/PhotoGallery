@@ -4,9 +4,6 @@ using PhotoGallery.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.DAL.Repositories
 {
@@ -24,7 +21,7 @@ namespace PhotoGallery.DAL.Repositories
         }
 
         public void Delete(int id)
-        {            
+        {
             Genre genre = _db.Genres.Find(id);
             if (genre != null)
                 _db.Genres.Remove(genre);
@@ -32,12 +29,25 @@ namespace PhotoGallery.DAL.Repositories
 
         public IEnumerable<Genre> GetAll()
         {
-            return _db.Genres;
+            IEnumerable<Genre> genres = _db.Genres;
+
+            foreach (var genre in genres)
+            {
+                _db.Entry(genre).Collection(g => g.Photos).Load();
+            }
+            return genres;
+        }
+
+        public IEnumerable<Genre> GetByFilter(object filter)
+        {
+            throw new NotImplementedException();
         }
 
         public Genre GetById(int id)
         {
-            return _db.Genres.Find(id);
+            Genre genre = _db.Genres.Find(id);
+            _db.Entry(genre).Collection(g => g.Photos).Load();
+            return genre;
         }
 
         public void Update(Genre genre)

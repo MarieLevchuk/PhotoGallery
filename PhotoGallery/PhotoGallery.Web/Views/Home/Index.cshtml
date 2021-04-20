@@ -40,9 +40,9 @@
                 <div class="photos_line">
                     <div class="photos_container">
                         <a class="genre_title" href="/Home/ToGenre?genreId=@genre.GenreId">@genre.Name</a>
-                        @for (int i = 0; i < 5; i++)
+                        @foreach (var photo in  genre.Photos.OrderByDescending(p => p.PhotoId).Take(5))
                         {
-                            <div class="photo_item img" style="background: url(/Content/photos/5t68.jpg) center no-repeat; background-size: cover;"> </div>
+                            <div class="photo_item img" style="background: url(@photo.Path) center no-repeat; background-size: cover;"> </div>
                         }
                     </div>
                 </div>

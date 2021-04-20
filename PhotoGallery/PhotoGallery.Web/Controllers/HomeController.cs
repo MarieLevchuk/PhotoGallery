@@ -24,10 +24,12 @@ namespace PhotoGallery.Web.Controllers
         public ActionResult Index()
         {
             IEnumerable<GenreDTO> genreDtos = _genreService.GetAll();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<GenreDTO, GenreViewModel>()).CreateMapper();
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<GenreDTO, GenreViewModel>();
+                cfg.CreateMap<PhotoDTO, PhotoViewModel>();
+            }).CreateMapper();
             var genres = mapper.Map<IEnumerable<GenreDTO>, List<GenreViewModel>>(genreDtos);
-
-            //IEnumerable<PhotoDTO> photosDtos = _photoService.GetPhotos();
 
             return View(genres);
         }
@@ -35,12 +37,13 @@ namespace PhotoGallery.Web.Controllers
         public ActionResult ToGenre(int genreId)
         {
             GenreDTO genreDto = _genreService.GetById(genreId);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<GenreDTO, GenreViewModel>()).CreateMapper();
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<GenreDTO, GenreViewModel>();
+                cfg.CreateMap<PhotoDTO, PhotoViewModel>();
+            }).CreateMapper();
             var genre = mapper.Map<GenreDTO, GenreViewModel>(genreDto);
-            //var photos = mapper.Map<IEnumerable<PhotoDTO>, List<PhotoViewModel>>(photoDtos);
-            //IEnumerable<PhotoDTO> photoDtos = _photoService.GetPhotos();
-            //var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDTO, PhotoViewModel>()).CreateMapper();
-            //var photos = mapper.Map<IEnumerable<PhotoDTO>, List<PhotoViewModel>>(photoDtos);
+
             return View("Genre", genre);
         }
     }

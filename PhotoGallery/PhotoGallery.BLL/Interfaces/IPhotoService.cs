@@ -10,6 +10,7 @@ namespace PhotoGallery.BLL.Interfaces
     public interface IPhotoService
     {
         IEnumerable<PhotoDTO> GetAll();
+        IEnumerable<PhotoDTO> GetByFilter(object filter);
         PhotoDTO GetById(int id);
     }
 }

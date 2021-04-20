@@ -3,11 +3,7 @@ using PhotoGallery.BLL.Interfaces;
 using PhotoGallery.BLL.Models;
 using PhotoGallery.DAL.EntityModels;
 using PhotoGallery.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.BLL.Services
 {
@@ -30,13 +26,24 @@ namespace PhotoGallery.BLL.Services
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
             return mapper.Map<Photo, PhotoDTO>(_database.Photos.GetById(id));
-            //return new PhotoDTO { PhotoId = photo.PhotoId, Author = photo.Author, Format=photo.Format, Path = photo.Path, Title = photo.Title };
         }
 
         public IEnumerable<PhotoDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Photo>, List<PhotoDTO>>(_database.Photos.GetAll());
+        }
+
+        public IEnumerable<PhotoDTO> GetByFilter(object filter)
+        {
+            if (filter == null)
+                throw new ValidationException("Incorrect data", "");
+            var photos = _database.Photos.GetByFilter(filter);
+            if (photos == null)
+                throw new ValidationException("Photos not found", "");
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Photo>, List<PhotoDTO>>(photos);
         }
     }
 }

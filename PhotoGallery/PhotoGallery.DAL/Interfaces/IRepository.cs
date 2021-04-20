@@ -9,6 +9,7 @@ namespace PhotoGallery.DAL.Interfaces
     public interface IRepository<T> where T: class
     {
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetByFilter(object filter);
         T GetById(int id);
         void Create(T item);
         void Update(T item);

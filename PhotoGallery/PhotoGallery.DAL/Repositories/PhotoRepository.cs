@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.DAL.Repositories
 {
@@ -21,17 +19,21 @@ namespace PhotoGallery.DAL.Repositories
         public void Create(Photo photo)
         {
             _db.Photos.Add(photo);
+            _db.SaveChanges();
         }
 
         public void Delete(int id)
         {
             Photo photo = _db.Photos.Find(id);
             if (photo != null)
+            {
                 _db.Photos.Remove(photo);
+                _db.SaveChanges();
+            }                
         }
 
         public IEnumerable<Photo> GetAll()
-        {
+        {            
             return _db.Photos;
         }
 
@@ -53,6 +55,11 @@ namespace PhotoGallery.DAL.Repositories
         public void Update(Photo photo)
         {
             _db.Entry(photo).State = EntityState.Modified;
+        }
+
+        public IEnumerable<Photo> GetByFilter(object filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

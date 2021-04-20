@@ -3,11 +3,7 @@ using PhotoGallery.BLL.Interfaces;
 using PhotoGallery.BLL.Models;
 using PhotoGallery.DAL.EntityModels;
 using PhotoGallery.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.BLL.Services
 {
@@ -21,21 +17,33 @@ namespace PhotoGallery.BLL.Services
         }
 
         public IEnumerable<GenreDTO> GetAll()
-        {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Genre, GenreDTO>()).CreateMapper();
+        {            
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Photo, PhotoDTO>();
+                cfg.CreateMap<Genre, GenreDTO>();
+            }).CreateMapper();
             return mapper.Map<IEnumerable<Genre>, List<GenreDTO>>(_database.Genres.GetAll());
         }
 
         public GenreDTO GetById(int id)
         {
-            if (id == null)
+            if (id == 0)
                 throw new ValidationException("Incorrect id", "");
-            var genre = _database.Genres.GetById(id);
+
+            Genre genre = _database.Genres.GetById(id);
             if (genre == null)
                 throw new ValidationException("Genre not found", "");
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Genre, GenreDTO>()).CreateMapper();
-            return mapper.Map<Genre, GenreDTO>(_database.Genres.GetById(id));
+            
+            var mapper = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<Genre, GenreDTO>();
+                cfg.CreateMap<Photo, PhotoDTO>();
+                cfg.CreateMap<IEnumerable<Photo>, List<PhotoDTO>>();
+            }).CreateMapper();
+
+            return mapper.Map<Genre, GenreDTO>(genre);
         }
     }
 }
