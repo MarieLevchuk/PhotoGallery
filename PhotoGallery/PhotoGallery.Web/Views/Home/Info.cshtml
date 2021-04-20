@@ -1,0 +1,43 @@
+﻿@model PhotoGallery.Web.Models.PhotoViewModel
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="my_header_genre_page" style="height: 100px;">
+    <div class="my_container">
+        <div class="header_inner_genre_page">
+            <img class="header_logo" src="~/Content/source/logo.png">
+            <nav class="my_nav"> <a class="nav_link" href="/Home/Index">Home</a> <a class="nav_link" href="/Home/Index">Catalog</a> </nav>
+            <!--end nav-->
+            <div class="my_title">
+                <h1>@Model.Title</h1>
+            </div>
+        </div>
+        <!--end header inner-->
+    </div>
+    <!--my_container-->
+</header>
+<div class="photocard">
+    <div class="my_container">
+        <div class="photocard_inner">
+            <div class="photocard_photo" style="background: url(@Model.Path) center no-repeat; background-size: cover;"></div>
+            <div class="photocard_info">
+                <h3>title</h3>
+                <input type="text" value="@Model.Title">
+                <h3>Author</h3>
+                <input type="text" value="@Model.Author">
+                <h3>Genre(s)</h3>
+                <div class="photocard_info_genre">
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <span class="genre_box"><input class="check_genre" type="checkbox" value="@genre.GenreId" checked>@genre.Name</span>
+                        <br />
+                    }
+                </div>
+                <input class="edit_button" type="button" value="save changes">
+            </div>
+        </div>
+    </div>
+</div>
+

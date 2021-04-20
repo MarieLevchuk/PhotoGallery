@@ -24,7 +24,13 @@ namespace PhotoGallery.BLL.Services
             if (photo == null)
                 throw new ValidationException("Photo not found", "");
 
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Genre, GenreDTO>();
+                cfg.CreateMap<Photo, PhotoDTO>();
+                //cfg.CreateMap<IEnumerable<Photo>, List<PhotoDTO>>();
+            }).CreateMapper();
+
             return mapper.Map<Photo, PhotoDTO>(_database.Photos.GetById(id));
         }
 

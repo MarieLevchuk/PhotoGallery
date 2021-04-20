@@ -19,12 +19,40 @@
     </div>
     <!--my_container-->
 </header>
+
+<style type="text/css">
+    .edit_photos_block {
+        margin: 0;
+        padding: 0;
+        height: 40px;
+        background-color: #eff3f7;
+    }
+
+    .edit_photos_block_inner {
+        padding-top: 12.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a.edit_photos_title {
+        font-size: 12px;
+        color: #a2a2a2;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+        a.edit_photos_title:hover {
+            color: #5298bd;
+        }
+</style>
+
 <div class="photos_tile">
     <div class="my_container">
         <div class="photos_tile_inner">
             @foreach (var photo in Model.Photos)
             {
-                <div class="item" style="background: url(@photo.Path) center no-repeat; background-size: cover;"> </div>
+                 <a class="item" href="/Home/ToInfo?photoId=@photo.PhotoId"><div class="item" style="background: url(@photo.Path) center no-repeat; background-size: cover;"> </div></a>
             }            
         </div>
     </div>

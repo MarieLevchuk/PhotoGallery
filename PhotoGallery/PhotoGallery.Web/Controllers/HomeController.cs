@@ -46,5 +46,27 @@ namespace PhotoGallery.Web.Controllers
 
             return View("Genre", genre);
         }
+
+        public ActionResult ToInfo(int photoId)
+        {
+            PhotoDTO photoDTO = _photoService.GetById(photoId);
+            var mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<GenreDTO, GenreViewModel>();
+                cfg.CreateMap<PhotoDTO, PhotoViewModel>();
+            }).CreateMapper();
+            var photo = mapper.Map<PhotoDTO, PhotoViewModel>(photoDTO);
+            return View("Info", photo);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(PhotoViewModel photoViewModel)
+        {
+            PhotoDTO photoDTO = _photoService.GetById(photoViewModel.PhotoId);
+            photoDTO.Title = photoViewModel.Title;
+            photoDTO.Author = photoViewModel.Author;
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -48,8 +48,10 @@ namespace PhotoGallery.DAL.Repositories
         }
 
         public Photo GetById(int id)
-        {
-            return _db.Photos.Find(id);
+        {            
+            Photo photo = _db.Photos.Find(id);
+            _db.Entry(photo).Collection(g => g.Genres).Load();
+            return photo;
         }
 
         public void Update(Photo photo)

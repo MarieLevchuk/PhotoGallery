@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 
-    *:hover {
+    a:hover {
         color: #5298bd;
     }
 
@@ -115,6 +115,9 @@ nav {
     margin: 0;
     padding: 6px 20px;
 }
+.genre_link:last-child{
+    color: #5298bd;
+}
 
 
 /*GALLERY*/
@@ -194,7 +197,7 @@ nav {
     -webkit-background: cover;
     height: 200px;
     width: 200px;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 
@@ -248,6 +251,31 @@ h1 {
     font-size: 40px;
 }
 
+.edit_photos_block {
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    background-color: #eff3f7;
+}
+
+.edit_photos_block_inner {
+    padding-top: 12.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.edit_photos_title {
+    font-size: 12px;
+    color: #a2a2a2;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+    a.edit_photos_title:hover {
+        color: #5298bd;
+    }
+
 .my_title {
     display: flex;
     align-items: baseline;
@@ -268,8 +296,79 @@ h1 {
 
 .item {
     margin: 0.5%;
-    background-color: darkslateblue;
     width: 300px;
     max-width: 500px;
     height: 300px;
 }
+/*-----------info PAGE------------*/
+
+.photocard_inner {
+    border-radius: 10px;
+    margin: 2% auto;
+    background-color: #e7e8ee;
+    max-width: 1200px;
+    max-height: 800px;
+    width: 80%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-transform: lowercase;
+    color: #313f47;
+}
+
+.photocard_photo {
+    margin: 5% 0 5% 5%;
+    max-width: 500px;
+    width: 400px;
+    height: 400px;    
+    background-size: cover;
+}
+
+.photocard_info {
+    margin-left: 10%;
+}
+
+    .photocard_info input {
+        border-radius: 2px;
+        margin-bottom: 15px;
+        margin-top: 5px;
+        border: none;
+        outline: none;
+        width: 300px;
+        height: 40px;
+        color: #171c1f;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 15px;
+        box-shadow: 2px 2px 5px rgba(122, 122, 122, 0.29);
+    }
+
+input.check_genre {
+    width: 12px;
+    height: 12px;
+    box-shadow: none;
+}
+
+.genre_box {
+    margin-top: 20px;
+    padding-top: 40px;
+    margin-left: 20px;
+}
+
+.photocard_info_genre input.edit_button {
+    color: white;
+    background-color: #5298bd;
+}
+
+input:focus {
+    box-shadow: 2px 2px 5px rgba(102, 175, 237, 0.53);
+}
+
+input.edit_button:hover {
+    color: #3d4771;
+    background-color: #9cd4f2;
+}
+
+
