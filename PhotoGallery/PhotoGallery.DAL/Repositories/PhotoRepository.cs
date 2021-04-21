@@ -1,10 +1,8 @@
 ﻿using PhotoGallery.DAL.EF;
 using PhotoGallery.DAL.EntityModels;
 using PhotoGallery.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 
 namespace PhotoGallery.DAL.Repositories
 {
@@ -37,16 +35,6 @@ namespace PhotoGallery.DAL.Repositories
             return _db.Photos;
         }
 
-        public IEnumerable<Photo> GetItemsByGenre(object photoFilter, Genre genre)
-        {
-            if (photoFilter != null)
-            {
-                return _db.Photos.OrderByDescending(i => i.PhotoId).Where(i => i.Genres.Contains(genre)).Take((int)photoFilter);
-            }                
-            else
-                return _db.Photos;
-        }
-
         public Photo GetById(int id)
         {            
             Photo photo = _db.Photos.Find(id);
@@ -57,11 +45,6 @@ namespace PhotoGallery.DAL.Repositories
         public void Update(Photo photo)
         {
             _db.Entry(photo).State = EntityState.Modified;
-        }
-
-        public IEnumerable<Photo> GetByFilter(object filter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

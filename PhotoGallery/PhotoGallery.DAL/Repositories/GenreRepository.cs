@@ -1,7 +1,6 @@
 ﻿using PhotoGallery.DAL.EF;
 using PhotoGallery.DAL.EntityModels;
 using PhotoGallery.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -36,11 +35,6 @@ namespace PhotoGallery.DAL.Repositories
                 _db.Entry(genre).Collection(g => g.Photos).Load();
             }
             return genres;
-        }
-
-        public IEnumerable<Genre> GetByFilter(object filter)
-        {
-            throw new NotImplementedException();
         }
 
         public Genre GetById(int id)

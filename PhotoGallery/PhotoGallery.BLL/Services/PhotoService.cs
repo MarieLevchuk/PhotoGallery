@@ -28,7 +28,6 @@ namespace PhotoGallery.BLL.Services
             {
                 cfg.CreateMap<Genre, GenreDTO>();
                 cfg.CreateMap<Photo, PhotoDTO>();
-                //cfg.CreateMap<IEnumerable<Photo>, List<PhotoDTO>>();
             }).CreateMapper();
 
             return mapper.Map<Photo, PhotoDTO>(_database.Photos.GetById(id));
@@ -38,18 +37,6 @@ namespace PhotoGallery.BLL.Services
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Photo>, List<PhotoDTO>>(_database.Photos.GetAll());
-        }
-
-        public IEnumerable<PhotoDTO> GetByFilter(object filter)
-        {
-            if (filter == null)
-                throw new ValidationException("Incorrect data", "");
-            var photos = _database.Photos.GetByFilter(filter);
-            if (photos == null)
-                throw new ValidationException("Photos not found", "");
-
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Photo>, List<PhotoDTO>>(photos);
         }
     }
 }

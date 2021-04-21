@@ -2,10 +2,7 @@
 using PhotoGallery.BLL.Interfaces;
 using PhotoGallery.BLL.Models;
 using PhotoGallery.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PhotoGallery.Web.Controllers
@@ -72,6 +69,12 @@ namespace PhotoGallery.Web.Controllers
             photoDTO.Author = photoViewModel.Author;
 
             return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public ActionResult GenresEdit()
+        {
+            return View("GenreCRUD");
         }
     }
 }
