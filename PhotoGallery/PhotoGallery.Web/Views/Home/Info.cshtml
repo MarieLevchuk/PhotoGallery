@@ -24,18 +24,36 @@
             <div class="photocard_photo" style="background: url(@Model.Path) center no-repeat; background-size: cover;"></div>
             <div class="photocard_info">
                 <h3>title</h3>
-                <input type="text" value="@Model.Title">
-                <h3>Author</h3>
-                <input type="text" value="@Model.Author">
-                <h3>Genre(s)</h3>
-                <div class="photocard_info_genre">
-                    @foreach (var genre in Model.Genres)
-                    {
-                        <span class="genre_box"><input class="check_genre" type="checkbox" value="@genre.GenreId" checked>@genre.Name</span>
-                        <br />
-                    }
-                </div>
-                <input class="edit_button" type="button" value="save changes">
+                @if (ViewBag.IsRegistered)
+                {
+                    <input type="text" value="@Model.Title">
+                    <h3>Author</h3>
+                    <input type="text" value="@Model.Author">
+                    <h3>Genre(s)</h3>
+                    <div class="photocard_info_genre">
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <span class="genre_box"><input class="check_genre" type="checkbox" value="@genre.GenreId" checked>@genre.Name</span>
+                            <br />
+                        }
+                    </div>
+                    <input class="edit_button" type="button" value="save changes">
+                }
+                else
+                {
+                    <div style="margin: 5px; padding-left:20px; font-size: 20px; text-transform: uppercase; color: #41b1be">@Model.Title</div>
+                    <h3>Author</h3>
+                    <div  style="margin: 5px; padding-left: 20px; font-size: 20px; text-transform: uppercase; color: #41b1be">@Model.Author</div>
+                    <h3>Genre(s)</h3>
+                    <div class="photocard_info_genre">
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <span class="genre_box"><div class="check_genre"  style="margin: 5px; padding-left: 20px; font-size: 20px; text-transform: lowercase; color: #41b1be">@genre.Name</div></span>
+                            <br />
+                        }
+                    </div>
+                }
+
             </div>
         </div>
     </div>

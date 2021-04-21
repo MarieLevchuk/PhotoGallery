@@ -23,6 +23,8 @@ namespace PhotoGallery.Web.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.IsRegistered = User.Identity.IsAuthenticated;
+
             IEnumerable<GenreDTO> genreDtos = _genreService.GetAll();
             var mapper = new MapperConfiguration(cfg =>
             {
@@ -32,7 +34,7 @@ namespace PhotoGallery.Web.Controllers
             var genres = mapper.Map<IEnumerable<GenreDTO>, List<GenreViewModel>>(genreDtos);
 
             return View(genres);
-        }
+        }        
         
         public ActionResult ToGenre(int genreId)
         {
@@ -49,6 +51,8 @@ namespace PhotoGallery.Web.Controllers
 
         public ActionResult ToInfo(int photoId)
         {
+            ViewBag.IsRegistered = User.Identity.IsAuthenticated;
+
             PhotoDTO photoDTO = _photoService.GetById(photoId);
             var mapper = new MapperConfiguration(cfg =>
             {
@@ -60,6 +64,7 @@ namespace PhotoGallery.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(PhotoViewModel photoViewModel)
         {
             PhotoDTO photoDTO = _photoService.GetById(photoViewModel.PhotoId);

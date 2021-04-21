@@ -115,9 +115,7 @@ nav {
     margin: 0;
     padding: 6px 20px;
 }
-.genre_link:last-child{
-    color: #5298bd;
-}
+
 
 
 /*GALLERY*/
@@ -370,5 +368,65 @@ input.edit_button:hover {
     color: #3d4771;
     background-color: #9cd4f2;
 }
+/*----------crud genre PAGE------------*/
 
+.genreinfo_inner {
+    border-radius: 10px;
+    margin: 2% auto;
+    background-color: #e7e8ee;
+    max-width: 1200px;
+    width: 80%;
+    height: 20%;
+    text-transform: lowercase;
+}
+
+.crud_buttons_block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #313f47;
+    padding-bottom: 20px;
+}
+
+h3 {
+    margin-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 5px;
+}
+
+.genre_input {
+    margin: 5px auto 15px 20px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    width: 313px;
+    height: 40px;
+    color: #171c1f;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgba(122, 122, 122, 0.29);
+}
+
+.crud_buttons_block {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.crud_button {
+    border: none;
+    margin: 0 1% 0 0;
+    height: 30px;
+    width: 10%;
+    color: white;
+    background-color: #adb8be;
+}
+
+    .crud_button:hover {
+        color: #3d4771;
+        background-color: #9cd4f2;
+    }
 
